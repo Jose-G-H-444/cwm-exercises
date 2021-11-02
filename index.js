@@ -26,8 +26,13 @@ const PRACTICE_FUNCTIONS = {
             return 'Point: ' + output;
         }
         return output;
+    },
+    stringProperties: (obj) => {
+        const stringProperties = {};
+        for (let key in obj) {
+            if (typeof obj[key] === 'string') 
+                stringProperties[key] = obj[key];
+        }
+        return stringProperties;
     }
 }
-
-
-console.log(PRACTICE_FUNCTIONS.checkSpeed(129));
