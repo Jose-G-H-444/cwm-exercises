@@ -1,6 +1,4 @@
-// for loops run condition first?
-
-const PRACTICE_FUNCTIONS = {
+const FUNCTIONS = {
     max: (a, b) => a > b ? a : b,
     isLandscape: (width, height) => width >= height, //never return true false UGLY
     FizzBuzz: (input) => {
@@ -59,5 +57,25 @@ const PRACTICE_FUNCTIONS = {
             if (value) truthyCount++;
         }
         return truthyCount;
+    },
+    calcGrade: (marks) => {
+        const invalidMark = marks.find( (mark) => mark > 100 || mark < 0 );
+        if (invalidMark) return `invalid mark entered: ${invalidMark}`;
+        const avgMark = marks.reduce( (prev, curr) => prev + curr) / marks.length;
+        if (avgMark >= 90) return 'A';
+        if (avgMark >= 80) return 'B';
+        if (avgMark >= 70) return 'C';
+        if (avgMark >= 60) return 'D';
+        return 'F';
+    },
+    showStars: (rows) => {
+        for (let row = 1; row <= rows; row++) {
+            let pattern = '';
+            for (let stars = 1; stars <= row; stars++) 
+                pattern += '*';
+            console.log(pattern);
+        }
     }
 }
+
+FUNCTIONS.showStars(5);
