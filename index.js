@@ -46,5 +46,18 @@ const PRACTICE_FUNCTIONS = {
                 sum += i;
                 
         return sum;
+    },
+    showNumbers: (limit) => {
+        for (let i = 0; i <= limit; i++) {
+            const message = (i % 2 === 0) ? 'EVEN' : 'ODD';
+            console.log(i, message);
+        }
+    },
+    countTruthy: (array) => {
+        let truthyCount = 0;
+        for (let value of array) {
+            if (value) truthyCount++;
+        }
+        return truthyCount;
     }
 }
