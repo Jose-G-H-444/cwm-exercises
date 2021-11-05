@@ -75,7 +75,35 @@ const FUNCTIONS = {
                 pattern += '*';
             console.log(pattern);
         }
+    },
+    // printPrimes: (limit) => {
+
+    // }
+    buildVector: (bitCount) => {
+        // Total bits each number stores
+        const BITS_PER_NUMBER = 32;
+
+        // Numbers needed to store bitCount
+        const numberCount = Math.ceil(bitCount / BITS_PER_NUMBER);
+
+        const vector = new Array(numberCount);
+
+        for (let i = 0; i < numberCount; i++)
+            vector[i] = 0;
+        
+        return vector;
+    },
+    // n is 0 index
+    setNthBit: (bitVector, n) => {
+        const BITS_PER_NUMBER = 32;
+        const nthNumIndex = Math.floor(n / BITS_PER_NUMBER);
+        n = n - nthNumIndex * BITS_PER_NUMBER;
+
+        const mask = 1 << n;
+        bitVector[nthNumIndex] |= mask;
     }
 }
 
-FUNCTIONS.showStars(5);
+let bitVector = FUNCTIONS.buildVector(33);
+FUNCTIONS.setNthBit(bitVector, 31);
+console.log(bitVector);
