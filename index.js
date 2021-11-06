@@ -76,9 +76,25 @@ const FUNCTIONS = {
             console.log(pattern);
         }
     },
-    // printPrimes: (limit) => {
+    printPrimes: (limit) => {
+        const BITS_PER_NUMBER = 32;
+        const bitVetor = FUNCTIONS.buildVector(limit / BITS_PER_NUMBER);
 
-    // }
+        // Sieve of Eratosthenes
+        setNthBit(bitVector, 0);
+        for (let i = 1; i <= limit; i++) {
+            for(let j = i; j <= limit; j+= i) {
+                FUNCTIONS.setNthBit(bitVector, j);
+            }
+        }
+
+        printBitVector(bitVector);
+    },
+    printBitVector: (bitVector) => {
+        for (let i = 0; i < bitVector.length; i++) {
+            if(!bitVector[i]);
+        }
+    },
     buildVector: (bitCount) => {
         // Total bits each number stores
         const BITS_PER_NUMBER = 32;
@@ -101,9 +117,12 @@ const FUNCTIONS = {
 
         const mask = 1 << n;
         bitVector[nthNumIndex] |= mask;
+    },
+    getNthBit: (bitVector, n) => {
+        
     }
 }
 
 let bitVector = FUNCTIONS.buildVector(33);
-FUNCTIONS.setNthBit(bitVector, 31);
+FUNCTIONS.setNthBit(bitVector, 63);
 console.log(bitVector);
